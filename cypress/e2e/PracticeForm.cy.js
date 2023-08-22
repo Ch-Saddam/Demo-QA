@@ -1,13 +1,11 @@
 /// <Reference types= "cypress"/>
-describe('Demo-Qa', () => {
-  it('practice form', () => {
-    cy.visit("https://demoqa.com/")         //Main Url
-    cy.log("Clicking on Forms button");
+describe('Automating Practice Form', () => {
+  it('should intercept and verify practice form', () => {
+    cy.visit("https://demoqa.com/")         //Main demoqa.com.
     cy.contains("Forms").click();            // Tap on form
     cy.contains("Practice Form").click();     // Tap on practice form
 
-
-    // Fill out the form
+    // Form Filling
     cy.get("#firstName").type("Cowlar");
     cy.get("#lastName").type("Developer");
     cy.get("#userEmail").type("qaengineer@cowlar.com");
@@ -15,30 +13,25 @@ describe('Demo-Qa', () => {
     cy.get("#userNumber").type("0123456789");
     // Date of Birth is kept default
     cy.get("#subjectsInput").type("Computer Science").type("{enter}");
-    cy.get("[for='hobbies-checkbox-1']").click(); // Select Music
+    cy.get("[for='hobbies-checkbox-3']").click(); // Select Music
     cy.get("#currentAddress").type("Address 1");
     cy.get(':nth-child(4) > .group-header > .header-wrapper').click()
-    cy.get("#state").type("NCR").type("{enter}");
+    cy.get("#state").click().type("NCR").click().type("{enter}")
     cy.wait(1000)
-    //cy.get("#city").type("Delhi").type("{enter}")
+    cy.get("#city").click().type("Delhi").click().type("{enter}")
 
-    // Select the desired city from the dropdown (assuming there's a dropdown)
-    //cy.get("#city").click(); 
     // Click on the Submit button
-
-    //cy.get("#submit").click();
-
     cy.get("#submit").click({ force: true });
 
     // Verify the information in the modal
-    cy.get(".modal").should("contain.text", "Cowlar Developer");
-    cy.get(".modal").should("contain.text", "qaengineer@cowlar.com");
-    cy.get(".modal").should("contain.text", "Male");
+    cy.get(".modal-content").should("contain.text", "Cowlar Developer");
+    cy.get(".modal-content").should("contain.text", "qaengineer@cowlar.com");
+    cy.get(".modal-content").should("contain.text", "Male");
     cy.get(".modal-content").should("contain.text", "0123456789");
     cy.get(".modal-content").should("contain.text", "Computer Science");
-    //cy.get(".modal-content").should("contain.text", "Music");
+    cy.get(".modal-content").should("contain.text", "Music");
     cy.get(".modal-content").should("contain.text", "Address 1");
-    //cy.get(".modal-content").should("contain.text", "NCR Delhi");
+    cy.get(".modal-content").should("contain.text", "NCR Delhi");
 
     // Close the Modal
     cy.get('#example-modal-sizes-title-lg').should('contain', 'Thanks for submitting the form')
