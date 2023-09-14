@@ -9,7 +9,7 @@ describe("Automating Interactions Test", () => {
     // Step 2: Click on Interactions Card/Button
     cy.contains("Interactions").click();
 
-    // Step 3: Verify Sidebar tabs
+    // Step 3: Verify Sidebar tab
     cy.contains("Elements");
     cy.contains("Forms");
     cy.contains("Alerts, Frame & Windows");

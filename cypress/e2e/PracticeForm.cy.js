@@ -15,7 +15,7 @@ const options = {
   day: 'numeric',   
 };
 
-// Format the date using toLocaleDateString with options
+
 const formattedDate = date.toLocaleDateString('en-NZ', options);
 
     cy.get("#firstName").type("Cowlar");
@@ -48,7 +48,6 @@ const formattedDate = date.toLocaleDateString('en-NZ', options);
       .should("contain.text", "qaengineer@cowlar.com")
       .should("contain.text", "Male")
       .should("contain.text", "0123456789")
-      // The date can modal is display with comma after the month, so can no
       .should("contain.text", formattedDate )
       .should("contain.text", "Computer Science")
       .should("contain.text", "Music")

@@ -7,7 +7,7 @@ it('Intercept by RouteMatcher ', () => {
   // Click on Book Store Tab
   cy.contains("Book Store").click();
 
-  // Click on the Understanding ECMAScript 6 book
+  // Click on the Understanding ECMAScript 6 books
   cy.contains("Understanding ECMAScript 6").click();
   cy.intercept({
     method: 'GET',
